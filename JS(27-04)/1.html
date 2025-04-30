@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert(cA())">A</button>
+    <button onclick="alert(cB())">B</button>
+    <script>
+        function createcounter()
+        {
+            let count=0;
+            return function (){
+                count++;
+                return count;
+            };
+        }
+        const cA=createcounter();
+        const cB=createcounter();
+    </script>
+</body>
+</html>
+
+
+/*I created createCounter function, where it creates a private count variable and gives us a function that change and remember that count. Every time we call createCounter, it makes a new private count, so each counter you create is completely independent.
+
+So when we use one counter (counterA), it remembers its own count, and when you create another (counterB), it starts from scratch and gives the zero value, which does not effects first count. This is done coz of closures, which allow functions to keep access to the variables they were created with, even after the outer function has finished running.
+*/

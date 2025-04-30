@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name=
+        {
+            n:"Alice",
+            greetDelayed:function()
+            {
+                setTimeout(function()
+                {
+                    console.log(`Hello ${this.n}!`);
+                },1000);
+            } 
+        };
+        name.greetDelayed();
+
+        let name1=
+        {
+            n:"Alice",
+            greetDelayed:function()
+            {
+                const self=this;
+                setTimeout(function()
+                {
+                    console.log(`Hello ${self.n}!`);
+                },1000);
+            }
+        };
+        name1.greetDelayed();
+
+        let name2=
+        {
+            n:"Alice",
+            greetDelayed:function()
+            {
+                setTimeout(()=>{
+                    console.log(`Hello ${this.n}!`);
+                },1000);
+            }
+        }
+        name2.greetDelayed();
+    </script>
+</body>
+</html>
+
+
+/*Inside a setTimeout, a regular function doesn’t keep the this value from the object, rather it defaults to the global scope.
+To fix this, you can either:
+=Save the correct this in a variable by itself, or
+=Use an arrow function, which keeps the this from where it was defined.*/
